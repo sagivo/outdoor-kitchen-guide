@@ -27,6 +27,10 @@ The four main burners deliver strong, even heat across 760 square inches of cook
 
 Napoleon's fit and finish is a half-step above most mid-range built-ins — solid welds, smooth lid action, and the SafetyGlow knobs that turn red when a burner is on. The integrated trim ring is genuinely useful: it frames the cutout and hides the small gaps that make DIY islands look amateur. Ventilation still matters — leave the clearances the manual specifies and never enclose a propane tank without dedicated vents.
 
+## Napoleon in the lineup
+
+The Prestige 500 sits between two philosophies: the [Blaze Premium LTE 32](/grills/blaze-premium-lte-32/) (buy it for the warranty, skip the rotisserie) and the [Bull Outlaw 30](/grills/bull-outlaw-30/) (nearly the same cooking for less money, less refinement). Napoleon wins when rotisserie and infrared versatility are the priority — it's the only one of the three that truly does everything. The three-way breakdown in [Napoleon vs Blaze vs Bull](/posts/napoleon-vs-blaze-vs-bull/) makes the trade-offs explicit, and our [how-to-choose guide](/posts/how-to-choose-built-in-grill/) covers whether the infrared premium is worth it for your cooking.
+
 ## The bottom line
 
 You are paying for versatility and finish. If the rotisserie burner will get used monthly, the Prestige 500 Built-In earns its premium. If not, put the savings toward the countertop.

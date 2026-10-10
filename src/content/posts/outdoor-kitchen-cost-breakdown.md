@@ -50,8 +50,18 @@ The grill head gets all the attention, but it is usually less than half the proj
 
 1. **Straight island, not L-shaped.** Corners are expensive.
 2. **Concrete or tile countertop.** Looks great, costs half of granite.
-3. **Propane instead of a gas line** — if your grill usage is moderate.
+3. **Propane instead of a gas line** — if your grill usage is moderate. (See [natural gas vs propane](/posts/natural-gas-vs-propane-grill/) for the full fuel math.)
 4. **Phase the appliances.** Build the island with space for a pizza oven or fridge, add them next year.
+
+## Hidden costs people forget
+
+**Ventilation.** If your kitchen sits under any roof or pergola, budget $1,500–$4,000+ for an outdoor-rated vent hood plus ducting. Our [ventilation guide](/posts/outdoor-kitchen-ventilation-guide/) covers sizing and code requirements — and skipping it can mean a failed inspection.
+
+**Permits.** Building, gas, and electrical permits together can add several hundred dollars. Some HOAs also charge review fees for outdoor structures.
+
+**The "while we're at it" creep.** Lighting, a ceiling fan under the pavilion, upgraded pavers around the island, a bigger gas meter — each is reasonable alone, and together they can add 20–30% to the project. Decide the scope in writing before construction starts.
+
+**Small-space savings.** Working with a compact patio? Our [small outdoor kitchen ideas](/posts/small-outdoor-kitchen-ideas/) show how a 6x4-foot footprint keeps every one of these line items at the low end of its range.
 
 ## Price your build
 

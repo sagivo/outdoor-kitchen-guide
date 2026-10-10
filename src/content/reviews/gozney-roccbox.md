@@ -25,6 +25,10 @@ The Roccbox's patented baffle forces the flame to roll across the dome ceiling i
 
 The safe-touch silicone exterior is more than a gimmick — at a party with kids around a 950°F oven, not getting burned on the shell matters. Folding legs, 44 pounds, and a genuinely compact footprint make it the easiest oven here to store.
 
+## Roccbox vs the field
+
+The Roccbox's real rival is the [Ooni Koda 16](/grills/ooni-koda-16/) — not on quality, but on philosophy: perfect 12-inch pizzas vs more 16-inch pizzas per night. For couples and small families, the Roccbox's heat retention and build quality win. For anyone who hosts, the Koda 16's capacity wins. The full brand comparison is in [Ooni vs Gozney](/posts/ooni-vs-gozney/), and the [best pizza ovens roundup](/posts/best-pizza-ovens-2026/) puts all five ovens side by side.
+
 ## The bottom line
 
 The best-cooking 12-inch oven you can buy. The size ceiling is real, but within it, nothing touches the Roccbox.

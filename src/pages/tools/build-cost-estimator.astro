@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_URL } from "../../lib/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { breadcrumbLd } from "../../lib/schema";
+import { MODELS, priceTier } from "../../data/models";
+import { amazonLink } from "../../lib/amazon";
+
+const grills = MODELS.filter((m) => m.category === "grill");
+const grillsJson = JSON.stringify(
+  grills.map((m) => ({ id: m.id, name: m.shortName, priceLow: m.priceLow, priceHigh: m.priceHigh, link: amazonLink(m.query, m.asin) }))
+);
+
+const title = "Outdoor Kitchen Build Cost Estimator (2026)";
+const description =
+  "Estimate your full outdoor kitchen build cost: grill head, island, countertop, gas line, electrical, and extras. Line-item breakdown in 60 seconds.";
+const url = `${SITE_URL}/tools/build-cost-estimator/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Build cost estimator", href: "/tools/build-cost-estimator/" },
+];
+const jsonLd = [breadcrumbLd(crumbs), {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Outdoor Kitchen Build Cost Estimator",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url,
+}];
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>What will your outdoor kitchen cost?</h1>
+      <p>
+        The grill head is usually less than half the project. Pick your line
+        items below for an honest total — then read the
+        <a href="/posts/outdoor-kitchen-cost-breakdown/">full cost breakdown</a>.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div>
+        <label for="grill">Grill head</label>
+        <select id="grill">
+          {grills.map((g) => (
+            <option value={g.id}>{g.name} — ~${g.priceLow.toLocaleString("en-US")}–${g.priceHigh.toLocaleString("en-US")}</option>
+          ))}
+        </select>
+      </div>
+      <div class="row">
+        <div>
+          <label for="shape">Island shape</label>
+          <select id="shape">
+            <option value="straight">Straight run (cheapest)</option>
+            <option value="lshape">L-shaped (+~40%)</option>
+          </select>
+        </div>
+        <div>
+          <label for="counter">Countertop</label>
+          <select id="counter">
+            <option value="concrete">Concrete / tile ($45/sq ft)</option>
+            <option value="granite">Granite ($85/sq ft)</option>
+            <option value="quartzite">Quartzite ($120/sq ft)</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="gas">Gas supply</label>
+          <select id="gas">
+            <option value="propane">Propane tank (no line needed)</option>
+            <option value="ng-near">Natural gas — meter nearby (~$600)</option>
+            <option value="ng-far">Natural gas — long run (~$1,400)</option>
+          </select>
+        </div>
+        <div>
+          <label for="labor">Who builds the island?</label>
+          <select id="labor">
+            <option value="pro">Contractor (labor ~40%)</option>
+            <option value="diy">DIY (materials only)</option>
+          </select>
+        </div>
+      </div>
+      <fieldset style="border:2px solid var(--line-2);border-radius:12px;padding:1rem 1.25rem;margin-top:1.25rem;">
+        <legend style="font-weight:800;padding:0 .5rem;">Extras</legend>
+        <label><input type="checkbox" id="ex-oven" /> Pizza oven (~$600)</label>
+        <label><input type="checkbox" id="ex-fridge" /> Outdoor fridge (~$1,200)</label>
+        <label><input type="checkbox" id="ex-sink" /> Sink + plumbing (~$1,800)</label>
+        <label><input type="checkbox" id="ex-light" /> Lighting + outlets (~$600)</label>
+      </fieldset>
+      <p style="margin-top:1.5rem;"><button class="btn" id="calc-btn" type="button">Estimate my build 💰</button></p>
+      <div class="calc-result" id="cost-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>Where the money goes</h2>
+      <p>
+        In a typical build, the grill head is 30–50% of the total. The island
+        structure, countertop, and utilities make up the rest — which is why
+        choosing between a $2,300 and a $2,900 grill matters less than choosing
+        between a straight and an L-shaped island. See the
+        <a href="/posts/outdoor-kitchen-cost-breakdown/">line-by-line cost breakdown</a>
+        for realistic budget tiers.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ grillsJson }}>
+    const GRILLS = JSON.parse(grillsJson);
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => "$" + Math.round(n).toLocaleString("en-US");
+
+    $("calc-btn").addEventListener("click", () => {
+      const grill = GRILLS.find((g) => g.id === $("grill").value);
+      const grillCost = (grill.priceLow + grill.priceHigh) / 2;
+      const lshape = $("shape").value === "lshape";
+      const islandBase = lshape ? 5200 : 3700;
+      const counterSqft = lshape ? 28 : 20;
+      const counterRate = { concrete: 45, granite: 85, quartzite: 120 }[$("counter").value];
+      const counterCost = counterSqft * counterRate;
+      const gasCost = { propane: 150, "ng-near": 600, "ng-far": 1400 }[$("gas").value];
+      const extras = [
+        ["ex-oven", "Pizza oven", 600],
+        ["ex-fridge", "Outdoor fridge", 1200],
+        ["ex-sink", "Sink + plumbing", 1800],
+        ["ex-light", "Lighting + outlets", 600],
+      ].filter(([id]) => $(id).checked);
+      const extrasCost = extras.reduce((s, [, , c]) => s + c, 0);
+      const subtotal = grillCost + islandBase + counterCost + gasCost + extrasCost;
+      const pro = $("labor").value === "pro";
+      const labor = pro ? subtotal * 0.4 : 0;
+      const total = subtotal + labor;
+
+      const rows = [
+        ["Grill head", grill.name, grillCost],
+        ["Island structure", lshape ? "L-shaped" : "Straight run", islandBase],
+        ["Countertop", `${counterSqft} sq ft`, counterCost],
+        ["Gas supply", $("gas").selectedOptions[0].textContent.split(" (")[0], gasCost],
+        ...extras.map(([, label], i) => [label, "Added", extras[i][2]]),
+      ];
+      if (pro) rows.push(["Contractor labor", "~40% of materials", labor]);
+
+      $("cost-result").innerHTML = `
+        <h3>Your estimated build: <strong style="font-size:1.4rem;">${fmt(total)}</strong></h3>
+        <table class="compat-table">
+          ${rows.map(([a, b, c]) => `<tr><td>${a}<br><span style="color:#5c6f60;font-size:.85rem;">${b}</span></td><td style="text-align:right"><strong>${fmt(c)}</strong></td></tr>`).join("")}
+          <tr><td><strong>Total</strong></td><td style="text-align:right"><strong>${fmt(total)}</strong></td></tr>
+        </table>
+        <p style="font-size:.87rem;color:#5c6f60;">Ballpark US pricing, October 2026. Get a contractor quote before committing — labor varies wildly by market.</p>
+        <p><a class="btn buy btn-sm" href="${grill.link}" rel="sponsored nofollow noopener" target="_blank">Check ${grill.name} price on Amazon</a></p>
+        <p class="fine">As an Amazon Associate we earn from qualifying purchases.</p>`;
+      $("cost-result").classList.add("show");
+      $("cost-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd, type Crumb } from "../../lib/schema";
+
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+];
+const tools = [
+  { href: "/tools/build-cost-estimator/", icon: "💰", name: "Outdoor Kitchen Cost Estimator", text: "Price your full build: grill head, island, countertop, gas, electrical and extras.", go: "Price my build" },
+  { href: "/tools/grill-size-recommender/", icon: "📐", name: "Grill Size Recommender", text: "Household size + entertaining habits → the BTUs and cooking area you need.", go: "Size my grill" },
+  { href: "/tools/pizza-oven-fuel-compare/", icon: "🔥", name: "Pizza Oven Fuel Compare", text: "Gas vs wood vs electric: annual fuel cost, preheat time and 5-year totals.", go: "Compare fuels" },
+  { href: "/grills/", icon: "📊", name: "Comparison Chart", text: "Every grill and pizza oven side by side: BTU, cooking area, max temp, fuel and price. Sortable.", go: "Compare models" },
+];
+---
+
+<BaseLayout
+  title="Free Outdoor Kitchen Calculators & Tools"
+  description="Free outdoor kitchen tools: build cost estimator, grill size recommender, pizza oven fuel cost comparison, and a sortable chart of every grill and pizza oven."
+  canonical={`${SITE_URL}/tools/`}
+  jsonLd={breadcrumbLd(crumbs)}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>Free outdoor kitchen tools</h1>
+      <p>Turn "what should I buy?" into numbers. Every tool runs in your browser, and nothing you enter leaves your device.</p>
+    </div>
+    <div class="tool-grid">
+      {tools.map((t) => (
+        <a class="tool-card" href={t.href}>
+          <div class="tool-icon">{t.icon}</div>
+          <h2 class="h3">{t.name}</h2>
+          <p>{t.text}</p>
+          <span class="go">{t.go}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

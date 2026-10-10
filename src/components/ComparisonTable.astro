@@ -1,0 +1,81 @@
+---
+import type { OutdoorProduct } from "../data/models";
+import { CATEGORY_LABEL } from "../data/models";
+import PriceTier from "./PriceTier.astro";
+import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
+
+interface Props {
+  models: OutdoorProduct[];
+  sortable?: boolean;
+  caption?: string;
+}
+const { models, sortable = false, caption } = Astro.props;
+---
+
+<div class="cmp-wrap">
+  <table class:list={["cmp", sortable && "sortable"]}>
+    {caption && <caption>{caption}</caption>}
+    <thead>
+      <tr>
+        <th scope="col" data-sort="text">Model</th>
+        <th scope="col" data-sort="text">Type</th>
+        <th scope="col" data-sort="num">Power</th>
+        <th scope="col" data-sort="text">Size</th>
+        <th scope="col" data-sort="text">Fuel</th>
+        <th scope="col" data-sort="num">Price tier</th>
+        <th scope="col"><span class="sr-only">Buy</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {models.map((m) => (
+        <tr>
+          <th scope="row" data-v={m.name}>
+            <a href={`/grills/${m.id}/`}>{m.name}</a>
+          </th>
+          <td data-label="Type" data-v={m.category}>{CATEGORY_LABEL[m.category]}</td>
+          <td data-label="Power" data-v={m.category === "grill" ? m.totalBtu ?? 0 : m.maxTempF ?? 0}>{m.category === "grill" ? `${m.totalBtu?.toLocaleString("en-US")} BTU` : `${m.maxTempF}°F max`}</td>
+          <td data-label="Size" data-v={m.category === "grill" ? `${m.cookingAreaSqIn} sq in` : `${m.pizzaSizeIn}" pizza`}>{m.category === "grill" ? `${m.cookingAreaSqIn} sq in` : `${m.pizzaSizeIn}" pizza`}</td>
+          <td class="c-nav" data-label="Fuel" data-v={m.category === "grill" ? m.fuel ?? "" : m.fuelType ?? ""}>{m.category === "grill" ? m.fuel : m.fuelType}</td>
+          <td data-label="Price tier" data-v={m.priceLow}><PriceTier model={m} label={false} /></td>
+          <td class="c-buy">
+            <a class="btn btn-xs buy" href={amazonLink(m.query, m.asin)} rel={AFFILIATE_REL} target="_blank">
+              Check price<span class="sr-only"> of the {m.name} on Amazon</span>
+            </a>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{sortable && (
+  <script>
+    document.querySelectorAll<HTMLTableElement>("table.sortable").forEach((table) => {
+      const tbody = table.tBodies[0];
+      table.querySelectorAll<HTMLTableCellElement>("th[data-sort]").forEach((th, col) => {
+        th.tabIndex = 0;
+        th.setAttribute("role", "button");
+        th.title = "Sort by this column";
+        let asc = false;
+        const sort = () => {
+          asc = !asc;
+          const num = th.dataset.sort === "num";
+          const rows = [...tbody.rows];
+          rows.sort((a, b) => {
+            const av = a.cells[col].dataset.v ?? "";
+            const bv = b.cells[col].dataset.v ?? "";
+            const r = num ? parseFloat(av) - parseFloat(bv) : av.localeCompare(bv);
+            return asc ? r : -r;
+          });
+          rows.forEach((r) => tbody.appendChild(r));
+          table.querySelectorAll("th[aria-sort]").forEach((h) => h.removeAttribute("aria-sort"));
+          th.setAttribute("aria-sort", asc ? "ascending" : "descending");
+        };
+        th.addEventListener("click", sort);
+        th.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sort(); }
+        });
+      });
+    });
+  </script>
+)}

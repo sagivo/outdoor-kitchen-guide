@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_NAME, SITE_URL } from "../lib/site";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  url: `${SITE_URL}/about/`,
+  name: `About ${SITE_NAME}`,
+};
+---
+
+<BaseLayout title="About" description={`About ${SITE_NAME}: an independent, research-based buyer's guide to built-in gas grills and outdoor pizza ovens, with comparisons, calculators and transparent methodology.`} canonical={`${SITE_URL}/about/`} jsonLd={jsonLd}>
+  <div class="wrap">
+    <article class="prose">
+      <h1>About {SITE_NAME}</h1>
+      <p>
+        {SITE_NAME} is an independent buyer's guide to built-in gas grills and
+        outdoor pizza ovens — the two anchors of a great outdoor kitchen. We
+        publish detailed comparisons, sizing and cost calculators, and fuel
+        guides so you can buy the right gear the first time.
+      </p>
+      <h2>How we research</h2>
+      <p>
+        We compile manufacturer specifications, professional reviews, and owner
+        feedback, then cross-check claims (like BTU ratings and max temperatures)
+        across multiple sources. Specs and prices change, so we mark them as
+        approximate and always recommend verifying on the retailer page before buying.
+        The full process is on our
+        <a href="/how-we-research/">how we research</a> page.
+      </p>
+      <h2>How we make money</h2>
+      <p>
+        {SITE_NAME} participates in the Amazon Services LLC Associates Program. When
+        you click a product link and buy, we may earn a commission at no extra cost
+        to you. This funds our research and free calculator tools. Commissions never
+        decide which products we recommend or how they rank.
+      </p>
+    </article>
+  </div>
+</BaseLayout>

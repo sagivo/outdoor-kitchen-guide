@@ -1,0 +1,63 @@
+---
+// Category-based product illustration, used whenever no licensed product photo
+// exists in src/assets/products/. Grills render a built-in grill head;
+// pizza ovens render a dome oven. Decorative — real specs are in the tables.
+import type { OutdoorProduct } from "../data/models";
+
+interface Props {
+  model: OutdoorProduct;
+  size?: number;
+}
+const { model: m, size = 96 } = Astro.props;
+const uid = `g-${m.id}-${Math.random().toString(36).slice(2, 7)}`;
+const ember = "#ff7a1a";
+const steel = "#9aa3ad";
+const dark = "#2b2f36";
+---
+
+{m.category === "grill" ? (
+  <svg width={size} height={size} viewBox="0 0 120 120" role="img" aria-label={`${m.name} illustration`}>
+    <defs>
+      <linearGradient id={`${uid}-body`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c7ccd3" />
+        <stop offset="1" stop-color={steel} />
+      </linearGradient>
+      <linearGradient id={`${uid}-lid`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#dfe3e8" />
+        <stop offset="1" stop-color="#aeb5bf" />
+      </linearGradient>
+    </defs>
+    <rect x="14" y="52" width="92" height="44" rx="6" fill={`url(#${uid}-body)`} stroke={dark} stroke-width="2.5" />
+    <path d="M14 52 Q14 30 60 30 Q106 30 106 52 Z" fill={`url(#${uid}-lid)`} stroke={dark} stroke-width="2.5" />
+    <rect x="52" y="18" width="16" height="12" rx="3" fill={dark} />
+    {[0, 1, 2, 3].map((i) => (
+      <line x1={26 + i * 23} y1="62" x2={26 + i * 23} y2="86" stroke={dark} stroke-width="2" opacity=".55" />
+    ))}
+    {[0, 1, 2].map((i) => (
+      <g>
+        <circle cx={38 + i * 22} cy="102" r="6" fill={dark} />
+        <line x1={38 + i * 22} y1="102" x2={38 + i * 22} y2="98" stroke={ember} stroke-width="2.5" stroke-linecap="round" />
+      </g>
+    ))}
+    {[0, 1, 2].map((i) => (
+      <path d={`M${30 + i * 26} 44 q3 -6 6 0 q3 6 6 0`} stroke={ember} stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".9" />
+    ))}
+  </svg>
+) : (
+  <svg width={size} height={size} viewBox="0 0 120 120" role="img" aria-label={`${m.name} illustration`}>
+    <defs>
+      <linearGradient id={`${uid}-dome`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a3f47" />
+        <stop offset="1" stop-color={dark} />
+      </linearGradient>
+    </defs>
+    <path d="M20 96 Q20 44 60 44 Q100 44 100 96 Z" fill={`url(#${uid}-dome)`} stroke={dark} stroke-width="2.5" />
+    <path d="M44 96 Q44 66 60 66 Q76 66 76 96 Z" fill="#12090a" stroke={ember} stroke-width="2.5" />
+    <ellipse cx="60" cy="88" rx="10" ry="4" fill="#e8b04b" />
+    {[0, 1, 2].map((i) => (
+      <path d={`M${52 + i * 8} 80 q2 -5 0 -9`} stroke={ember} stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".85" />
+    ))}
+    <rect x="14" y="96" width="92" height="8" rx="3" fill={steel} stroke={dark} stroke-width="2" />
+    <circle cx="60" cy="34" r="4" fill={ember} opacity=".9" />
+  </svg>
+)}

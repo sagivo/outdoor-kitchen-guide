@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_URL } from "../../lib/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { breadcrumbLd } from "../../lib/schema";
+import { MODELS, priceTier } from "../../data/models";
+import { amazonLink } from "../../lib/amazon";
+
+const grills = MODELS.filter((m) => m.category === "grill");
+const grillsJson = JSON.stringify(
+  grills.map((m) => ({
+    id: m.id, name: m.name, shortName: m.shortName,
+    burners: m.burners, totalBtu: m.totalBtu, cookingAreaSqIn: m.cookingAreaSqIn,
+    tier: `${priceTier(m).sym} ${priceTier(m).label}`,
+    link: amazonLink(m.query, m.asin),
+  }))
+);
+
+const title = "Grill Size Recommender — BTUs & Cooking Area for Your Household";
+const description =
+  "What size built-in grill do you need? Enter household size and entertaining habits to get recommended cooking area, BTU, and matching grill heads.";
+const url = `${SITE_URL}/tools/grill-size-recommender/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Grill size recommender", href: "/tools/grill-size-recommender/" },
+];
+const jsonLd = [breadcrumbLd(crumbs), {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Grill Size Recommender",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url,
+}];
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>What size grill do you actually need?</h1>
+      <p>
+        Bigger isn't better — it's just more island to build and more fuel to
+        burn. Tell us how you cook and we'll size the head.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div class="row">
+        <div>
+          <label for="household">People you cook for weekly <output id="household-out">4</output></label>
+          <input id="household" type="range" min="1" max="12" step="1" value="4" />
+        </div>
+        <div>
+          <label for="parties">Big cookouts per year <output id="parties-out">6</output></output></label>
+          <input id="parties" type="range" min="0" max="24" step="1" value="6" />
+        </div>
+      </div>
+      <div>
+        <label for="style">Cooking style</label>
+        <select id="style">
+          <option value="casual">Burgers, chicken, veggies — weeknight grilling</option>
+          <option value="steak">Steaks and searing — I chase crust</option>
+          <option value="roast">Rotisserie and roasts — whole birds and ribs</option>
+        </select>
+      </div>
+      <p style="margin-top:1.5rem;"><button class="btn" id="calc-btn" type="button">Recommend my grill 📐</button></p>
+      <div class="calc-result" id="size-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>The sizing rules behind this tool</h2>
+      <p>
+        Plan roughly <strong>100–130 sq in of cooking area per regular person</strong>,
+        plus headroom for parties. On power, target <strong>150–200 BTU per square
+        inch</strong> from the main burners — enough for hard searing without
+        hour-long preheats. Rotisserie ambitions add a rear-burner requirement,
+        which narrows the field fast. The full logic is in our
+        <a href="/posts/how-to-choose-built-in-grill/">built-in grill buying guide</a>.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ grillsJson }}>
+    const GRILLS = JSON.parse(grillsJson);
+    const $ = (id) => document.getElementById(id);
+    const els = ["household", "parties"].map($);
+    // Prefill from the homepage matcher (?household=&style=)
+    const qp = new URLSearchParams(location.search);
+    if (qp.get("household")) {
+      const h = $("household");
+      h.value = Math.min(+qp.get("household"), +h.max);
+    }
+    if (qp.get("style")) $("style").value = qp.get("style");
+    const fmt = (n) => Math.round(n).toLocaleString("en-US");
+
+    function paint(el) {
+      const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+      el.style.setProperty("--fill", pct + "%");
+    }
+    function sync() {
+      els.forEach(paint);
+      $("household-out").textContent = $("household").value;
+      $("parties-out").textContent = $("parties").value;
+    }
+    els.forEach((el) => el.addEventListener("input", sync));
+    sync();
+
+    $("calc-btn").addEventListener("click", () => {
+      const people = +$("household").value;
+      const parties = +$("parties").value;
+      const style = $("style").value;
+
+      const area = Math.min(1100, Math.round((people * 115 + parties * 12) / 10) * 10);
+      const btu = Math.round((area * 175) / 1000) * 1000;
+      const needRotis = style === "roast";
+      const headIn = area <= 750 ? "30-inch" : area <= 900 ? "30–32 inch" : "32–36 inch";
+
+      const matches = GRILLS.filter((g) =>
+        g.cookingAreaSqIn >= area * 0.85 &&
+        g.totalBtu >= btu * 0.8 &&
+        (!needRotis || g.id === "napoleon-prestige-500-built-in" || g.id === "bull-outlaw-30" || g.id === "lion-l75000-32")
+      ).slice(0, 3);
+      const fallback = matches.length ? matches : GRILLS.slice(0, 3);
+
+      const cards = fallback.map((g) => `
+        <div class="model-pick">
+          <h4><a href="/grills/${g.id}/">${g.name}</a></h4>
+          <p class="specs">${g.burners} burners · ${fmt(g.totalBtu)} BTU · ${fmt(g.cookingAreaSqIn)} sq in · ${g.tier}</p>
+          <div class="pc-actions"><a class="btn buy btn-sm" href="${g.link}" rel="sponsored nofollow noopener" target="_blank">Check price on Amazon</a><a class="pc-review" href="/grills/${g.id}/">Full review</a></div>
+        </div>`).join("");
+
+      $("size-result").innerHTML = `
+        <h3>Your target spec</h3>
+        <table class="compat-table">
+          <tr><td>Cooking area</td><td><strong>~${fmt(area)} sq in</strong> <span style="color:#5c6f60;font-size:.85rem;">(${headIn} head)</span></td></tr>
+          <tr><td>Main-burner power</td><td><strong>~${fmt(btu)} BTU</strong></td></tr>
+          <tr><td>Burners</td><td><strong>${area > 750 ? "4 (for zone control)" : "3–4"}</strong></td></tr>
+          ${needRotis ? `<tr><td>Rotisserie</td><td><strong>Rear infrared burner required</strong></td></tr>` : ""}
+          ${style === "steak" ? `<tr><td>Searing</td><td><strong>Look for infrared or 18k+ BTU burners</strong></td></tr>` : ""}
+        </table>
+        <h3 style="margin-top:1.5rem;">Heads that fit</h3>${cards}
+        <p class="fine">As an Amazon Associate we earn from qualifying purchases.</p>`;
+      $("size-result").classList.add("show");
+      $("size-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>

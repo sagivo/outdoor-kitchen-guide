@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_URL } from "../../lib/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { breadcrumbLd } from "../../lib/schema";
+
+const title = "Pizza Oven Fuel Cost Comparison: Gas vs Wood vs Electric";
+const description =
+  "Compare pizza oven fuel costs: propane vs wood vs electric. Enter your pizza nights per month to see annual fuel cost, preheat time, and 5-year totals.";
+const url = `${SITE_URL}/tools/pizza-oven-fuel-compare/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Pizza oven fuel compare", href: "/tools/pizza-oven-fuel-compare/" },
+];
+const jsonLd = [breadcrumbLd(crumbs), {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Pizza Oven Fuel Cost Comparison",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url,
+}];
+
+// Ballpark US figures, October 2026. Labeled as estimates in the UI.
+const FUELS = {
+  gas: { name: "Propane gas", preheat: "15–25 min", perSession: 4.5, flavor: "Clean, neutral", convenience: "Push-button" },
+  wood: { name: "Wood / charcoal", preheat: "15–30 min + fire tending", perSession: 9, flavor: "Smoky, wood-fired", convenience: "Hands-on skill" },
+  electric: { name: "Electric", preheat: "20–30 min", perSession: 1.8, flavor: "Clean, neutral", convenience: "Plug in, dial temp" },
+};
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>Gas vs wood vs electric: what does pizza night cost?</h1>
+      <p>
+        Fuel is the smallest part of pizza-oven economics — but it decides how
+        you cook. Compare running costs, then read the
+        <a href="/posts/pizza-oven-fuel-guide/">fuel guide</a> for the full picture.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div>
+        <label for="nights">Pizza nights per month <output id="nights-out">4</output></label>
+        <input id="nights" type="range" min="1" max="16" step="1" value="4" />
+      </div>
+      <p style="margin-top:1.5rem;"><button class="btn" id="calc-btn" type="button">Compare fuels 🔥</button></p>
+      <div class="calc-result" id="fuel-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>What the comparison leaves out</h2>
+      <p>
+        Fuel cost is nearly irrelevant next to the oven price — a $500 oven
+        dwarfs years of propane. Choose fuel for <strong>cooking style</strong>,
+        not savings: gas for convenience, wood for flavor ritual, electric where
+        flames are banned. Multi-fuel ovens like the
+        <a href="/grills/ooni-karu-12/">Ooni Karu 12</a> let you change your mind later.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ fuelsJson: JSON.stringify(FUELS) }}>
+    const FUELS = JSON.parse(fuelsJson);
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => "$" + n.toFixed(n < 100 ? 2 : 0);
+
+    const el = $("nights");
+    const paint = () => el.style.setProperty("--fill", (((el.value - el.min) / (el.max - el.min)) * 100) + "%"));
+    const sync = () => { paint(); $("nights-out").textContent = el.value; };
+    el.addEventListener("input", sync);
+    sync();
+
+    $("calc-btn").addEventListener("click", () => {
+      const nights = +el.value;
+      const rows = Object.entries(FUELS).map(([key, f]) => {
+        const annual = f.perSession * nights * 12;
+        return { key, ...f, annual, five: annual * 5 };
+      }).sort((a, b) => a.annual - b.annual);
+
+      $("fuel-result").innerHTML = `
+        <h3>Annual fuel cost at ${nights} pizza nights/month</h3>
+        <table class="compat-table">
+          <tr><th style="text-align:left">Fuel</th><th style="text-align:right">Per year</th><th style="text-align:right">5 years</th></tr>
+          ${rows.map((r) => `<tr><td><strong>${r.name}</strong><br><span style="color:#5c6f60;font-size:.85rem;">${r.flavor} · ${r.convenience} · preheat ${r.preheat}</span></td><td style="text-align:right"><strong>${fmt(r.annual)}</strong></td><td style="text-align:right">${fmt(r.five)}</td></tr>`).join("")}
+        </table>
+        <p style="font-size:.87rem;color:#5c6f60;">Estimates based on typical US propane (~$22/tank refill), hardwood splits, and residential electricity, October 2026. Your mileage varies — wood prices especially.</p>`;
+      $("fuel-result").classList.add("show");
+      $("fuel-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>

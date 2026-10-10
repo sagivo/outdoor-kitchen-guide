@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { SITE_NAME, SITE_URL } from "../lib/site";
+import { breadcrumbLd, type Crumb } from "../lib/schema";
+
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "How we research", href: "/how-we-research/" },
+];
+---
+
+<BaseLayout
+  title="How We Research Built-In Grills & Pizza Ovens"
+  description={`How ${SITE_NAME} researches built-in gas grills and pizza ovens: where our specs come from, why we don't publish invented ratings, how we handle affiliate links, and how often guides are updated.`}
+  canonical={`${SITE_URL}/how-we-research/`}
+  jsonLd={breadcrumbLd(crumbs)}
+>
+  <div class="wrap post-wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <article class="prose">
+      <h1>How we research grills and pizza ovens</h1>
+      <p class="lead-p">
+        We'd rather tell you exactly how our recommendations are made than imply something they
+        aren't. Here's the process behind every guide, review and calculator on {SITE_NAME}.
+      </p>
+
+      <h2>What we do (and don't do)</h2>
+      <p>
+        {SITE_NAME} is a <strong>research-based</strong> buyer's guide. We don't run a lab, and our
+        reviews are not hands-on tests. Instead, for every model we:
+      </p>
+      <ul>
+        <li><strong>Start from the manufacturer's spec sheet</strong>: BTU, burners, cooking area, max temperature, fuel type, materials, warranty terms.</li>
+        <li><strong>Cross-check with independent reviews</strong> from publications that do test hands-on, and note where their results differ from the marketing claims.</li>
+        <li><strong>Read owner reports</strong> (forums, retailer reviews, support threads) for the problems that only show up after months of use: igniter failures, hot spots, rust on non-304 parts, support response times.</li>
+        <li><strong>Flag uncertainty.</strong> When a spec can't be confirmed, or sources disagree, we say so rather than guess.</li>
+      </ul>
+      <p>Each model page lists the sources we relied on.</p>
+
+      <h2>Why we don't publish scores</h2>
+      <p>
+        You won't find 9.2/10 ratings on this site. A single number can't capture
+        whether a grill fits <em>your</em> island, fuel supply, and cooking style —
+        and scores are too easy to game. Instead we give you the specs that matter,
+        the trade-offs in plain language, and calculators that turn your situation
+        into a shortlist. The ranking is yours to make, with real numbers.
+      </p>
+
+      <h2>Prices</h2>
+      <p>
+        Prices are typical US street prices at the time of our last update and are shown as ranges because
+        grills and ovens are discounted heavily and often. Always check the current price on the retailer page.
+      </p>
+
+      <h2>Affiliate links and independence</h2>
+      <p>
+        {SITE_NAME} is reader-supported. As an Amazon Associate we earn from qualifying purchases made through
+        our links, at no extra cost to you. Commissions never decide which products we recommend or how they
+        are ranked. Brands cannot pay for placement, and we don't accept free products in exchange for coverage.
+      </p>
+
+      <h2>Updates and corrections</h2>
+      <p>
+        We review our main buying guides whenever a significant model launches or prices shift materially.
+        Each page shows its last-updated date. Spot an error? <a href="/contact/">Tell us</a>
+        and we'll fix it.
+      </p>
+    </article>
+  </div>
+</BaseLayout>

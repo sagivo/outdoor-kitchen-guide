@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import Visual from "../../components/Visual.astro";
+import { MODELS } from "../../data/models";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd, itemListLd, faqLd, type Crumb } from "../../lib/schema";
+
+const url = `${SITE_URL}/grills/`;
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Compare", href: "/grills/" },
+];
+const faq = [
+  {
+    q: "What is the best built-in gas grill for an outdoor kitchen?",
+    a: "For most builders it comes down to Blaze for the lifetime warranty, Napoleon for rotisserie and searing features, or Bull for value. Match the head size to your island cutout first, then compare BTU and features.",
+  },
+  {
+    q: "What size pizza oven do I need?",
+    a: "A 12-inch oven suits couples and small families; a 16-inch oven halves the number of launches when you cook for a crowd. Gas is the easiest fuel, wood and multi-fuel add flavor with more hands-on fire management.",
+  },
+  {
+    q: "How much does a built-in grill cost compared to a freestanding one?",
+    a: "The grill head itself usually costs more than an equivalent freestanding grill, and the island, countertop, and gas line add several thousand on top. Use our build cost estimator to price the full project before you buy the head.",
+  },
+];
+const jsonLd = [breadcrumbLd(crumbs), itemListLd("Built-in gas grills and pizza ovens compared", MODELS), faqLd(faq)];
+
+const brands = [...new Set(MODELS.map((m) => m.brand))].sort();
+---
+
+<BaseLayout
+  title="Built-In Grill & Pizza Oven Comparison Chart (2026): Every Model"
+  description={`Compare ${MODELS.length} built-in gas grills and outdoor pizza ovens side by side: BTU, cooking area, max temperature, fuel type and price. Sortable chart.`}
+  canonical={url}
+  jsonLd={jsonLd}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero" data-pagefind-body>
+      <h1>Grill &amp; pizza oven comparison chart</h1>
+      <p>
+        Every model we track, side by side. Click any column to sort by it.
+        Covers {MODELS.length} products from {brands.join(", ")}.
+      </p>
+    </div>
+
+    <ComparisonTable models={MODELS} sortable caption="Built-in grills and pizza ovens (click headers to re-sort)" />
+    <p class="fine">Specs are manufacturer ratings. Prices are typical US street prices as of October 2026 and change often.</p>
+
+    <div class="section-head"><h2 class="section-title">Firepower and prices at a glance</h2></div>
+    <div class="viz-pair">
+      <Visual name="chart:btu" />
+      <Visual name="chart:prices" />
+    </div>
+
+    <div class="section-head"><h2 class="section-title">Every model</h2></div>
+    <div class="tp-grid">
+      {MODELS.map((m) => <ProductCard model={m} compact />)}
+    </div>
+
+    <div class="prose" style="margin-top:3rem;">
+      <h2>How to read this chart</h2>
+      <p>
+        <strong>Power</strong> is total BTU for grills and max temperature for pizza ovens.
+        <strong>Size</strong> is cooking area in square inches (grills) or max pizza diameter (ovens).
+        Use our <a href="/tools/grill-size-recommender/">grill size recommender</a> to match a head to
+        your household, and the <a href="/tools/build-cost-estimator/">build cost estimator</a> to price
+        the full outdoor kitchen around it.
+      </p>
+      <section class="faq" aria-label="FAQ">
+        <h2>FAQ</h2>
+        {faq.map((f) => <details><summary>{f.q}</summary><div>{f.a}</div></details>)}
+      </section>
+    </div>
+  </div>
+</BaseLayout>

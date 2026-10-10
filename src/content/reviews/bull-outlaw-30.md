@@ -25,8 +25,12 @@ Sixty thousand BTU across four burners is the sweet spot for a 30-inch head: eno
 
 The dual-lined hood is a real asset in wind, and the 304 stainless body handles weather without babying. Cutout dimensions are standard for the class, but as with every built-in, confirm the manual's numbers before the contractor cuts. Leave service clearance behind the island for the gas connection.
 
+## How it compares
+
+Against the [Blaze Premium LTE 32](/grills/blaze-premium-lte-32/), you're trading lifetime warranty and zone separators for a rear infrared burner and several hundred dollars back. Against the [Napoleon Prestige 500](/grills/napoleon-prestige-500-built-in/), you're trading thicker grids and finer fit-and-finish for a lower price on nearly identical cooking capability. Most buyers won't taste the difference — they'll feel it in the knobs. Read the full three-way in [Napoleon vs Blaze vs Bull](/posts/napoleon-vs-blaze-vs-bull/).
+
 ## The bottom line
 
-The Outlaw is proof that the premium built-in experience doesn't require a premium badge. Put the savings into the island.
+The Outlaw is proof that the premium built-in experience doesn't require a premium badge. Put the savings into the island — our [cost breakdown](/posts/outdoor-kitchen-cost-breakdown/) shows exactly what $500 buys elsewhere in the build.
 
 [Check the Bull Outlaw 30 price on Amazon](amazon:bull-outlaw-30)

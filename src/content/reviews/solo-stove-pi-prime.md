@@ -21,6 +21,10 @@ Skip it if you already know you are serious: the small opening gets annoying fas
 
 The half-dome shape is not just styling — less internal volume means faster preheats (about 15 minutes) and lower propane consumption. The tradeoff is headroom: turning a pizza inside is tighter than in a full-dome oven.
 
+## The upgrade path
+
+Buy the Pi Prime, use it for a season, and you'll know exactly what you want next: bigger deck (→ [Ooni Koda 16](/grills/ooni-koda-16/)), better heat retention (→ [Gozney Roccbox](/grills/gozney-roccbox/)), or wood fire (→ [Ooni Karu 12](/grills/ooni-karu-12/)). That's the Pi Prime's hidden value — it's a $300 education in your own preferences. And if you never upgrade, you've spent wisely: it makes genuinely great pizza. For renters and [small patios](/posts/small-outdoor-kitchen-ideas/), it may be the last oven you ever need.
+
 ## The bottom line
 
 The cheapest honest 950°F oven. Perfect first oven, outgrown second oven — and that is fine.

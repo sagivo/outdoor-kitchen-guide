@@ -46,7 +46,7 @@ Outdoor pizza ovens went from enthusiast toy to mainstream in about five years, 
 
 ## Gas vs wood vs multi-fuel
 
-This is the real decision, more than brand. **Gas** is consistent and effortless — the right call for weeknight pizza. **Wood/charcoal** adds smoky flavor you cannot fake, at the cost of tending a fire. **Multi-fuel** (Karu 12, or Roccbox with the wood attachment) starts wood and can add gas later. Our [fuel comparison tool](/tools/pizza-oven-fuel-compare/) puts numbers on preheat time and cost per pizza.
+This is the real decision, more than brand. **Gas** is consistent and effortless — the right call for weeknight pizza. **Wood/charcoal** adds smoky flavor you cannot fake, at the cost of tending a fire. **Multi-fuel** (Karu 12, or Roccbox with the wood attachment) starts wood and can add gas later. Our [fuel comparison tool](/tools/pizza-oven-fuel-compare/) puts numbers on preheat time and cost per pizza, and the [fuel guide](/posts/pizza-oven-fuel-guide/) walks through which fuel fits your setup — including small patios, where our [compact kitchen ideas](/posts/small-outdoor-kitchen-ideas/) keep the oven footprint minimal.
 
 ## Size: 12-inch vs 16-inch
 

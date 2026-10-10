@@ -21,6 +21,10 @@ Skip it if you run complex multi-zone cooks: three burners can't do what four ca
 
 The Infinity burners are genuinely hot — 20,000 BTU each — and the ceramic briquettes smooth out the heat map noticeably. Searing is direct and effective; low-and-slow works with one burner lit and the meat on the far side. The interior lighting sounds like a gimmick until you grill after dark, which, in summer, is most of the time.
 
+## Where it fits
+
+The S-Series 30 sits in a sweet spot the big three don't serve well: premium features (lighting, briquettes, LED knobs) at a mid-range price, in a compact 30-inch footprint. It's the easiest head to justify in a [small outdoor kitchen](/posts/small-outdoor-kitchen-ideas/) or a phased build where the island budget is tight. The tradeoff is real — three burners and no rotisserie — but for straightforward grilling it punches above its price. Compare it against the full field in our [best built-in grills](/posts/best-built-in-gas-grills-2026/) roundup.
+
 ## The bottom line
 
 The best way to get premium features without a premium invoice. Just be honest about whether three burners cover your cooking style.

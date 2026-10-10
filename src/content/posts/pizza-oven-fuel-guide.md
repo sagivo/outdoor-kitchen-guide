@@ -49,6 +49,16 @@ Electric pizza ovens (like Solo Stove's electric Pi and various indoor/outdoor m
 
 Use our [fuel comparison tool](/tools/pizza-oven-fuel-compare/) for your exact numbers, but the shape is: propane costs a few dollars per pizza night; hardwood splits cost more per session but you use less of them; electricity is cheapest per bake but the oven costs more up front.
 
+## Which fuel for your setup?
+
+**Small patio or balcony:** gas (or electric where flame is banned). Wood needs firewood storage and produces more smoke — bad neighbors in tight quarters. See our [small outdoor kitchen ideas](/posts/small-outdoor-kitchen-ideas/) for compact-friendly setups.
+
+**Full outdoor kitchen island:** gas plumbed alongside the grill's gas line is the cleanest install — one line, two appliances. A [multi-fuel oven](/grills/ooni-karu-12/) adds wood-fired weekends without a second gas drop.
+
+**The pizza obsessive:** wood or multi-fuel. You'll develop the fire skills, and the flavor payoff on long bakes is real.
+
+**Renters:** portable gas ovens like the [Solo Stove Pi Prime](/grills/solo-stove-pi-prime/) — no installation, moves with you.
+
 ## The bottom line
 
-Choose gas unless you specifically want the wood-fire hobby. Most wood-oven owners cook on gas 80% of the time anyway — which is exactly what multi-fuel is for.
+Choose gas unless you specifically want the wood-fire hobby. Most wood-oven owners cook on gas 80% of the time anyway — which is exactly what multi-fuel is for. Compare the five best ovens in our [2026 roundup](/posts/best-pizza-ovens-2026/).

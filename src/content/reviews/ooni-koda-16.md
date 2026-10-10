@@ -27,6 +27,10 @@ The L-shaped flame is a genuine improvement over the original Koda's rear-only b
 
 At 40 pounds with folding legs, the Koda 16 moves between storage and patio without drama. The stone stays in the oven; brush it clean after it cools. A cover is worth buying — the powder-coated shell handles weather, but the burner and ignition last longer dry.
 
+## Koda 16 in the lineup
+
+The Koda 16's position is simple: it's the capacity pick. Against the [Gozney Roccbox](/grills/gozney-roccbox/) you trade per-pizza perfection for volume; against the [Gozney Dome S1](/grills/gozney-dome-s1/) you trade the last 10% of thermal performance for a third of the price; against the [Karu 12](/grills/ooni-karu-12/) you trade wood-fired romance for weeknight reliability. For most buyers, most of the time, capacity and convenience win — which is why it's the default recommendation in our [best pizza ovens](/posts/best-pizza-ovens-2026/) roundup and the [Ooni vs Gozney](/posts/ooni-vs-gozney/) comparison.
+
 ## The bottom line
 
 The easiest path to great pizza at home. Gas convenience, 16-inch capacity, proven reliability — this is the one to beat.

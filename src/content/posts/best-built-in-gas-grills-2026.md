@@ -63,7 +63,9 @@ We score on published specs, warranty terms, and owner reports — never on comm
 
 **Budget the island, not just the head.** The grill head is typically 30–50% of the project cost. Our [outdoor kitchen cost estimator](/tools/build-cost-estimator/) prices the full build so the head doesn't blow the budget.
 
-**Gas line sizing matters.** High-BTU heads need properly sized gas lines. Mention the grill model to your installer before the line is run, not after.
+**Gas line sizing matters.** High-BTU heads need properly sized gas lines. Mention the grill model to your installer before the line is run, not after. And decide your fuel now — our [natural gas vs propane guide](/posts/natural-gas-vs-propane-grill/) covers the cost and convenience trade-offs, since most heads aren't convertible after purchase.
+
+**Not sure about the island at all?** Read [built-in vs freestanding](/posts/built-in-vs-freestanding-grill/) before committing to construction — a quality cart grill delivers 90% of the cooking for a fraction of the project cost.
 
 ## The bottom line
 

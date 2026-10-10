@@ -50,7 +50,7 @@ Four burners give you real zone control (sear zone + moderate zone + warming zon
 
 ## 6. Fuel: decide before ordering
 
-Natural gas is cheaper per BTU and never runs out; propane needs no gas line. Most premium heads come in both — but they are not convertible, so this decision is permanent.
+Natural gas is cheaper per BTU and never runs out; propane needs no gas line. Most premium heads come in both — but they are not convertible, so this decision is permanent. Read the full [natural gas vs propane breakdown](/posts/natural-gas-vs-propane-grill/) for installation costs and the breakeven math.
 
 ## 7. Warranty and support
 

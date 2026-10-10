@@ -45,10 +45,16 @@ Three brands dominate the premium built-in conversation: Napoleon (features), Bl
 
 **Price:** Bull is typically $300–$600 less than the other two. Napoleon sits at the top of the range.
 
+## Price and value math
+
+Street prices move, but the pecking order is stable: Bull typically lands $300–$600 below the other two, Napoleon at the top, Blaze in the middle. Over a 15-year ownership horizon, the math gets interesting. Bull's upfront savings are real money you can put into the countertop or a [pizza oven](/posts/best-pizza-ovens-2026/). Blaze's lifetime body warranty means you'll likely never buy burners, a hood, or a firebox again — just wear parts. Napoleon's premium buys cooking versatility that, used monthly, replaces a separate rotisserie or smoker purchase.
+
+Don't forget the fuel decision either: all three come in natural gas and propane versions, and the choice affects your installation cost significantly. Our [natural gas vs propane guide](/posts/natural-gas-vs-propane-grill/) runs the full cost comparison.
+
 ## Who should buy which
 
 - **The forever grill:** Blaze. You are buying the last built-in head you will need.
 - **The cook's grill:** Napoleon. You will use the rotisserie monthly.
 - **The smart-money grill:** Bull. You want premium specs and a premium island, and the budget has to cover both.
 
-Read the [full reviews](/grills/) for the details, or compare every model in the [sortable chart](/grills/).
+Read the [full reviews](/grills/) for the details, compare every model in the [sortable chart](/grills/), or step back to the [best built-in grills of 2026](/posts/best-built-in-gas-grills-2026/) roundup to see how these three stack against the rest of the field.

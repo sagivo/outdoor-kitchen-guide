@@ -25,8 +25,12 @@ This is where the money goes. The rolling flame and stone mass hold temperature 
 
 At 58 pounds the Dome S1 is not moving once you place it — plan its home like an appliance, ideally integrated into the outdoor kitchen counter run. It earns the footprint.
 
+## The Dome S1 in the outdoor kitchen
+
+At 58 pounds plus its footprint, the Dome S1 wants a permanent home — ideally its own counter section in the island, near the grill but with clear landing space on both sides for peels. If your kitchen is under a roof, check the [ventilation guide](/posts/outdoor-kitchen-ventilation-guide/): pizza ovens produce serious heat and smoke, and a covered setup needs a plan. For the gas-vs-wood decision, our [fuel guide](/posts/pizza-oven-fuel-guide/) covers why most owners end up on gas 80% of the time.
+
 ## The bottom line
 
-The best gas pizza oven most people can buy, at a price that demands commitment. If pizza night is a lifestyle, it is worth it.
+The best gas pizza oven most people can buy, at a price that demands commitment. If pizza night is a lifestyle, it is worth it. Compare it against the [Ooni Koda 16](/grills/ooni-koda-16/) in [Ooni vs Gozney](/posts/ooni-vs-gozney/).
 
 [Check the Gozney Dome S1 price on Amazon](amazon:gozney-dome-s1)

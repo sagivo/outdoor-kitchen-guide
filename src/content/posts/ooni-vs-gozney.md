@@ -45,6 +45,10 @@ Ooni and Gozney own the residential pizza oven market, and the rivalry is genuin
 
 Ooni has the bigger accessory ecosystem: more peels, covers, tables, and third-party add-ons. Gozney's accessories are fewer but excellent. Both brands hold resale value well — used Roccboxes and Kodas sell fast.
 
+## Long-term ownership
+
+A few things only become clear after a year of pizza nights. **Stone replacement:** both brands' stones are consumables over a long enough timeline — thermal cycling eventually cracks them. Replacement stones are readily available for both, so this is a wash. **Weather:** neither oven should live uncovered in harsh climates; a $50–$80 cover doubles the cosmetic lifespan. **Fuel logistics:** gas ovens (Koda, Roccbox, Dome S1) just need propane, while the wood-burning Karu needs dry hardwood storage — a real consideration if your [outdoor kitchen is compact](/posts/small-outdoor-kitchen-ideas/). Our [fuel guide](/posts/pizza-oven-fuel-guide/) breaks down gas vs wood vs multi-fuel in detail.
+
 ## The bottom line
 
-Buy Ooni for value and choice, Gozney for peak performance. Either way, you are getting a 950°F oven — the pizza will be good. See the [best pizza ovens of 2026](/posts/best-pizza-ovens-2026/) for the full ranking.
+Buy Ooni for value and choice, Gozney for peak performance. Either way, you are getting a 950°F oven — the pizza will be good. See the [best pizza ovens of 2026](/posts/best-pizza-ovens-2026/) for the full ranking, and the individual reviews of the [Ooni Koda 16](/grills/ooni-koda-16/) and [Gozney Roccbox](/grills/gozney-roccbox/) for the model-level details.

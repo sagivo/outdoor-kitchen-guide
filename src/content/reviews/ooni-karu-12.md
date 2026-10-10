@@ -25,6 +25,10 @@ Start the fire 15 minutes before you want to bake, feed small splits of hardwood
 
 At 26.4 pounds with folding legs and a locking chimney, the Karu 12 is the only oven here you will genuinely take to a friend's house. That portability is a real feature, not a spec-sheet line.
 
+## Karu 12 vs the gas alternatives
+
+The Karu's honest competitor isn't another wood oven — it's the [Ooni Koda 16](/grills/ooni-koda-16/). Same brand, similar money once you add the Karu's gas burner, wildly different experience: fire craft vs push-button. Buyers who romanticize wood fire should read our [fuel guide](/posts/pizza-oven-fuel-guide/) first — most wood-oven owners cook on gas 80% of the time, which is exactly the case for starting multi-fuel. If the budget is tight and the curiosity is real, the Karu 12 is the cheapest honest way to find out which side you're on.
+
 ## The bottom line
 
 Maximum flavor per dollar, minimum convenience. Know which side of that trade you are on before buying.
